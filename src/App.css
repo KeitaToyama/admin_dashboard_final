@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap");
+
+:root {
+    --yellow: linear-gradient(180deg, #F8D49A -146.42%, #FAD79D -46.42%);
+    --orange: #fca61f;
+    --black: #242d49;
+    --gray: #788097;
+    --purple: linear-gradient(180deg, #BB67FF 0%, #C484F3 100%);
+    --blue: #2522dd;
+    --glass: rgba(255, 255, 255, 0.54);
+    --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
+    --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+    --activeItem: #857fe654;
+  }
+  
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  font-family: 'Kosugi Maru', sans-serif;
+  background-color: black;
+}
+
+::-webkit-scrollbar {
+  background-color: black;
+  width: 0.4vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffc107;
+}
+
+.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  right: 0 !important;
+}
+
+
+
+  .App {
+    /* padding: 0.5rem 3.5rem; */
+    color: var(--black);
+    background: linear-gradient(
+      106.37deg,
+      #bcf7ff 29.63%,
+      #d0d0d0 51.55%,
+      #c6f2f3 90.85%
+    );
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .AppGlass {
+    display: flex;
+    /* flex-direction: row; */
+    display: grid;
+    grid-template-columns: 15rem auto ;
+    height: 97%;
+    width: 97%;
+    background: var(--glass);
+    border-radius: 2rem;
+
+    gap: 16px;
+    overflow: hidden;
+  }
+  
+  @media screen and (max-width: 1200px) {
+    /* .AppGlass{
+      grid-template-columns: 10% 50% auto;
+      overflow-y: scroll;
+    }  */
+  }
+  
+  @media screen and (max-width: 768px) {
+    /* .AppGlass{
+      grid-template-columns: 1fr;
+    }  */
+  }
