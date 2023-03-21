@@ -1,8 +1,8 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux';
-import { db, auth } from '../firebase';
-import { collection, onSnapshot, query, doc, setDoc, deleteDoc} from 'firebase/firestore';
+import { db, } from '../firebase';
+import {  doc, setDoc, deleteDoc} from 'firebase/firestore';
 
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -11,31 +11,16 @@ import Button from '@mui/joy/Button';
 import { DataGrid } from '@mui/x-data-grid';
 
 
-const Deals = () => {
+const Deals = (props) => {
   
   const [SelectionModel, setSelectionModel] = useState([])
   const [isselected, setIsselected] = useState(false)
 
 const [priceinput, setPriceinput] = useState(0);
 
-const [deals, setDeals] = useState([])
 
-  const q = query(collection(db, "deals"))
-useEffect(() => {
-  onSnapshot(q, (querySnapshot) => {
-    const dealsResults = [];
-    querySnapshot.docs.forEach((doc) => 
-    dealsResults.push({
-      id: doc.id,
-      reception: doc.data().reception,
-      price: "¥" + doc.data().price,
-      date: doc.data().date,
-    })
-    )
-    setDeals(dealsResults);
-  })
-}, [])
-// console.log(deals)
+
+let deals = props.deals
 
   const userName = useSelector((state) => state.uid.displayName)
 
@@ -69,9 +54,7 @@ onClick={async () => {
   price: priceinput,
   date: date.toLocaleString().slice(0, -3)
 
-  // reception: "管理人",
-  // price: 5000,
-  // date: "2023/3/23 12:47"
+  
 
 })
   window.location.reload();}}
@@ -103,7 +86,7 @@ onClick={async () => {
         pageSize={5}
         
         checkboxSelection
-// MUIの onSelectionModelChangeが言うこと聞かないので気合で処理していきます
+
 
         onCellClick={(event) => {
           if (SelectionModel.includes(event.id)) {
