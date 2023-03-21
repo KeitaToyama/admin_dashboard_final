@@ -20,6 +20,8 @@ const Sidebar = () => {
   const userPhoto = useSelector((state) => state.uid.photo)
   
     const [expanded, setExpaned] = useState(false)
+    
+
 
   return (
     <>
@@ -137,6 +139,14 @@ font-weight: bold;
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 1000px) {
+  .menu .menuItem:last-child {
+    display: none;
+  
+    }
+  }
+
 .active {
   background: var(--activeItem);
   margin-left: 0;
@@ -149,5 +159,4 @@ font-weight: bold;
   margin-right: calc(1rem - 8px);
 }
   `
-
 export default Sidebar

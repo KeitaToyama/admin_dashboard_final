@@ -60,7 +60,7 @@ body {
   }
   
   .AppGlass {
-    display: flex;
+    /* display: flex; */
     /* flex-direction: row; */
     display: grid;
     grid-template-columns: 15rem auto ;
@@ -71,6 +71,14 @@ body {
 
     gap: 16px;
     overflow: hidden;
+  }
+
+  @media (max-width: 1080px) {
+    .AppGlass  {
+    display: flex;
+
+      flex-direction: column; /* 行から列に変更 */
+    }
   }
   
   @media screen and (max-width: 1200px) {
@@ -85,3 +93,15 @@ body {
       grid-template-columns: 1fr;
     }  */
   }
+
+  .mobileLogout {
+    display: none;
+  }
+
+  @media (max-width: 1000px) {
+    .mobileLogout {
+      display:flex;
+      justify-content: center;
+    
+      }
+    }

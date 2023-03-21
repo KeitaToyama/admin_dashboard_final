@@ -1,34 +1,14 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux';
-import { db, auth } from '../firebase';
-import { collection, onSnapshot, query, doc, setDoc} from 'firebase/firestore';
+
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
-const Chart = () => {
-  const [deals, setDeals] = useState([])
+const Chart = (props) => {
 
-  const q = query(collection(db, "deals"))
-useEffect(() => {
-  onSnapshot(q, (querySnapshot) => {
-    const dealsResults = [];
-    querySnapshot.docs.forEach((doc) => 
-    dealsResults.push({
-      id: doc.id,
-      reception: doc.data().reception,
-      price: doc.data().price,
-      date: doc.data().date,
-      
-    })
-    )
-    setDeals(dealsResults);
-  })
-}, [])
-// console.log(deals)
+let deals = props.deals
 
-// 現在の日付を取得
 let currentDate = new Date();
 let week = []
 
@@ -39,7 +19,6 @@ for (let i = 0; i <= 6; i++) {
   pastDate.setDate(currentDate.getDate() - i);
   let day = pastDate.toLocaleString().slice(0, -8)
   let filtered = deals.filter(obj => obj.date.startsWith(day))
-  // console.log(filtered)
 
   let sum = 0;
 
@@ -51,7 +30,6 @@ for (let i = 0; i <= 6; i++) {
   
 
 }
-console.log(week)
 
 const data = [
   {
